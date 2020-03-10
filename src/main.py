@@ -7,19 +7,28 @@ import time
 import yaml
 
 
-def job():
-    print("")
-    print("Loading secrets from secrets.yml")
+def get_config():
+    with open("config.yml", 'r') as config_yaml:
+        config = yaml.load(config_yaml, Loader=yaml.FullLoader)
+    return config
+
+
+def get_secrets():
     with open("secrets.yml", 'r') as secrets_yaml:
         secrets = yaml.load(secrets_yaml, Loader=yaml.FullLoader)
+    return secrets
+
+
+def job():
+    print("")
+
+    secrets = get_secrets()
     account_sid = secrets["twilio"]["account_sid"]
     auth_token  = secrets["twilio"]["auth_token"]
     from_num = secrets["twilio"]["from_num"]
     to_num = secrets["twilio"]["to_num"]
 
-    print("Loading config from config.yml")
-    with open("config.yml", 'r') as config_yaml:
-        config = yaml.load(config_yaml, Loader=yaml.FullLoader)
+    config = get_config()
     regions_i_care_about = config["regions"]
     url = config["url"]
 
@@ -43,8 +52,10 @@ def job():
 
 
 def main():
-    period_in_minutes = 60
+    config = get_config()
+    period_in_minutes = config["check_duration_mins"] 
     print(f"Checking every {period_in_minutes} minutes.")
+
     job()
     schedule.every(period_in_minutes).minutes.do(job)
 
