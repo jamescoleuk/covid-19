@@ -1,4 +1,4 @@
-check_duration_mins: 10
+check_duration_mins: 60
 
 url: https://www.gov.uk/government/publications/coronavirus-covid-19-number-of-cases-in-england/coronavirus-covid-19-number-of-cases-in-england
 

@@ -6,8 +6,11 @@ import pandas as pd
 
 def get_file_names_to_check(output_dir, a_index, b_index):
     files = [f for f in listdir(output_dir) if isfile(join(output_dir, f))]
-    files.sort(reverse=True)
-    return [files[a_index], files[b_index]]
+    if (len(files) < 2):
+        return None
+    else:
+        files.sort(reverse=True)
+        return [files[a_index], files[b_index]]
 
 
 def check_for(region, data_dir, a_file_name, b_file_name):
