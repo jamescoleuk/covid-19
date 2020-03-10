@@ -6,6 +6,8 @@ Alerts you via text when regions you're interested in have new cases of covid-19
 *** How to use
 Copy ~secrets.template.yml~ to ~secrets.yml~ and fill it in with your Twilio details.
 
+Update ~config.yml~.
+
 *** Install dependencies
 Run ~./run python_deps~
 
