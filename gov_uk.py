@@ -4,7 +4,7 @@ import datetime
 import requests
 
 
-def get_c19_stats(output_dir, retrieval_time):
+def get_c19_stats(url, output_dir, retrieval_time):
 
     # Why separate files? This data will never get really huge, but it is 
     # the case that for many situations we won't care about very old data.
@@ -12,7 +12,6 @@ def get_c19_stats(output_dir, retrieval_time):
     # result in an increasingly slow program.
     
     # Fetch
-    url = "https://www.gov.uk/government/publications/coronavirus-covid-19-number-of-cases-in-england/coronavirus-covid-19-number-of-cases-in-england"
     page = requests.get(url)
     tree = html.fromstring(page.content)
     

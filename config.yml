@@ -1,0 +1,6 @@
+url: https://www.gov.uk/government/publications/coronavirus-covid-19-number-of-cases-in-england/coronavirus-covid-19-number-of-cases-in-england
+
+# Get your regions from the gov.uk URL
+regions:
+    - Bath and North East Somerset
+    - Wiltshire
