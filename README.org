@@ -1,0 +1,12 @@
+* covid-19 
+
+** gov.uk alerting
+Alerts you via text when regions you're interested in have new cases of covid-19.
+
+*** How to use
+Copy ~secrets.template.yml~ to ~secrets.yml~ and fill it in with your Twilio details.
+
+*** Install dependencies
+
+
+
