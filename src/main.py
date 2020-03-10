@@ -29,15 +29,20 @@ def job():
     gov_uk.get_c19_stats(url, data_dir, retrieval_time)
     files_to_compare = checking.get_file_names_to_check(data_dir, 0, 1)
     unchanged, changed = checking.results_for(regions_i_care_about, data_dir, files_to_compare)
-    print(unchanged)
-    print(changed)
+
+    for region in unchanged:
+        print(f"  {region}")
+    
+    for region in changed:
+        print(f"  {region}")
+
     alerting.send(changed, account_sid, auth_token, from_num, to_num )
 
 
 def main():
-    job()
     period_in_minutes = 60
     print(f"Checking every {period_in_minutes} minutes.")
+    job()
     schedule.every(period_in_minutes).minutes.do(job)
 
     while True:
