@@ -8,6 +8,7 @@ import yaml
 
 
 def job():
+    print("")
     print("Loading secrets from secrets.yml")
     with open("secrets.yml", 'r') as secrets_yaml:
         secrets = yaml.load(secrets_yaml, Loader=yaml.FullLoader)
@@ -36,7 +37,9 @@ def job():
     for region in changed:
         print(f"  {region}")
 
-    alerting.send(changed, account_sid, auth_token, from_num, to_num )
+    if(len(changed) > 0):
+        message = alerting.get_message(changed)
+        alerting.send(message, account_sid, auth_token, from_num, to_num )
 
 
 def main():

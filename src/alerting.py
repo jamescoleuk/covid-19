@@ -1,10 +1,14 @@
 from twilio.rest import Client
 
-def send(changed, account_sid, auth_token, from_num, to_num):
+def get_message(changed):
+    separator = "\n"
+    message = separator.join(changed)
+    return message
+
+def send(message, account_sid, auth_token, from_num, to_num):
+    print(f"Sending a message to {to_num}:\n--------\n{message}\n-------")
     client = Client(account_sid, auth_token)
-    for change in changed:
-        print(f"Sending a message to {to_num}: {change}")
-        client.messages.create(
-            to=to_num, 
-            from_=from_num,
-            body=change)
+    client.messages.create(
+        to=to_num, 
+        from_=from_num,
+        body=message)
