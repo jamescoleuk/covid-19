@@ -1,6 +1,8 @@
 * covid-19 
 
 ** gov.uk alerting
+Note: The gov.uk page stopped being updated on 13th March 2020.
+
 Alerts you via text when regions you're interested in have new cases of covid-19.
 
 *** How to use
